@@ -1,0 +1,112 @@
+{
+  "method": "방식4: 격자고정 20x20 + 크기 삼진",
+  "n_tags": 4,
+  "entropy": {
+    "Sample1": {
+      "Ex_mean": 0.9498,
+      "Ex_sd": 0.0604,
+      "Ey_mean": 0.9661,
+      "Ey_sd": 0.0322
+    },
+    "sample2": {
+      "Ex_mean": 0.9571,
+      "Ex_sd": 0.0321,
+      "Ey_mean": 0.9494,
+      "Ey_sd": 0.0473
+    },
+    "sample3": {
+      "Ex_mean": 0.9418,
+      "Ex_sd": 0.0519,
+      "Ey_mean": 0.9511,
+      "Ey_sd": 0.0633
+    },
+    "sample4": {
+      "Ex_mean": 0.958,
+      "Ex_sd": 0.0377,
+      "Ey_mean": 0.7186,
+      "Ey_sd": 0.2742
+    }
+  },
+  "entropy_overall": {
+    "Ex_mean": 0.9517,
+    "Ey_mean": 0.8963,
+    "ideal": 1.0
+  },
+  "bit_population_pct": {
+    "Sample1": {
+      "0": 33.25,
+      "1": 33.5,
+      "2": 33.25
+    },
+    "sample2": {
+      "0": 33.25,
+      "1": 33.5,
+      "2": 33.25
+    },
+    "sample3": {
+      "0": 33.25,
+      "1": 33.25,
+      "2": 33.5
+    },
+    "sample4": {
+      "0": 33.25,
+      "1": 33.5,
+      "2": 33.25
+    }
+  },
+  "bit_uniformity": {
+    "0": {
+      "mean": 33.25,
+      "sd": 0.0
+    },
+    "1": {
+      "mean": 33.44,
+      "sd": 0.11
+    },
+    "2": {
+      "mean": 33.31,
+      "sd": 0.11
+    },
+    "ideal": 33.3
+  },
+  "inter_HD": {
+    "Sample1 vs sample2": 0.685,
+    "Sample1 vs sample3": 0.6925,
+    "Sample1 vs sample4": 0.6775,
+    "sample2 vs sample3": 0.6675,
+    "sample2 vs sample4": 0.64,
+    "sample3 vs sample4": 0.615
+  },
+  "inter_HD_mean": 0.6629,
+  "inter_HD_sd": 0.0271,
+  "ideal_inter_ternary": 0.6667,
+  "pearson": {
+    "Sample1 vs sample2": -0.0338,
+    "Sample1 vs sample3": 0.0075,
+    "Sample1 vs sample4": 0.0,
+    "sample2 vs sample3": 0.0038,
+    "sample2 vs sample4": 0.0226,
+    "sample3 vs sample4": 0.0938
+  },
+  "pearson_mean": 0.0156,
+  "ideal_pearson": 0.0,
+  "intra_HD": {
+    "per_sample": {
+      "Sample1": 0.2913,
+      "sample2": 0.2673,
+      "sample3": 0.2409,
+      "sample4": 0.3344
+    },
+    "mean": 0.2835,
+    "sd": 0.117,
+    "reads_per_sample": 25,
+    "ideal": 0.0,
+    "note": "실제 재촬영본이 없어 섭동(노이즈/회전/이동) 시뮬레이션으로 추정"
+  },
+  "separation_inter_minus_intra": 0.3794,
+  "data_capacity": {
+    "nominal_cells": 400,
+    "degree_of_freedom": 303.5,
+    "note": "DoF = p(1-p)/σ² (논문 식5); 태그 수가 적으면 통계 신뢰도 낮음"
+  }
+}
