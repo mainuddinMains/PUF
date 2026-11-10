@@ -2,23 +2,15 @@
 # -*- coding: utf-8 -*-
 """
 puf_plots.py  —  [3] 지표 시각화 (논문 Fig 4f/4g 스타일 포함)
-EN: puf_plots.py  —  [3] Metric visualization (including paper Fig 4f/4g style)
 
 그림
-EN: Figures
   plot_entropy_g(keys)        행별 Ex / 열별 Ey 산점도        -> FIG_entropy_g.png      [Fig 4g]
-  EN: plot_entropy_g(keys): per-row Ex / per-column Ey scatter plot -> FIG_entropy_g.png [Fig 4g]
   plot_bit_population(keys)   태그별 비트 0/1/2 점유율 산점도  -> FIG_bit_population.png [Fig 4f]
-  EN: plot_bit_population(keys): scatter of bit 0/1/2 share per tag -> FIG_bit_population.png [Fig 4f]
   plot_bit_each(keys)         비트별 분리 패널 + 공간분포 맵   -> FIG_bit_each_*.png
-  EN: plot_bit_each(keys): separate panel per bit + spatial distribution map -> FIG_bit_each_*.png
   plot_hd(keys, intra)        inter/intra HD 히스토그램·행렬·막대 -> FIG_HD_*.png
-  EN: plot_hd(keys, intra): inter/intra HD histogram, matrix, bars -> FIG_HD_*.png
   plot_all(keys, raws)        위 전부
-  EN: plot_all(keys, raws): all of the above
 
 CLI:  py puf_plots.py         # 추출 → 전 그림 생성 → PUF_최종결과/FIG_*.png
-EN: CLI: py puf_plots.py   # extract -> generate all figures -> PUF_최종결과 (PUF final results)/FIG_*.png
 """
 import os, itertools
 import numpy as np
@@ -31,13 +23,12 @@ import puf_extract as E
 import puf_metrics as M
 
 # 논문 색: '0'=노랑, '1'=청록, '2'=자주
-# EN: Paper colors: '0'=yellow, '1'=teal, '2'=purple
 CBIT = {0: "#E8C400", 1: "#17A589", 2: "#7D3C98"}
 BNAME = {0: "'0' bit (none/faint)", 1: "'1' bit (medium)", 2: "'2' bit (large)"}
 
 
 def _save(fig, path):
-    """한글 경로 대응 저장.  (EN: Save in a way that works with Korean (non-ASCII) paths.)"""
+    """한글 경로 대응 저장."""
     tmp = os.path.join(os.environ.get("TEMP", E.OUTDIR), "_plt.png")
     fig.savefig(tmp, dpi=140); plt.close(fig)
     with open(tmp, "rb") as r, open(path, "wb") as w:
@@ -70,7 +61,7 @@ def plot_bit_population(keys, outdir):
     names = list(keys); n = len(names)
     x = np.arange(1, n + 1)
     pct = {v: [float((keys[f] == v).mean() * 100) for f in names] for v in (0, 1, 2)}
-    dodge = {0: -0.16, 1: 0.0, 2: 0.16}                  # 33%에 겹치므로 살짝 어긋나게  | EN: nudge slightly sideways because the points overlap near 33%
+    dodge = {0: -0.16, 1: 0.0, 2: 0.16}                  # 33%에 겹치므로 살짝 어긋나게
     for zoom, suffix in ((False, ""), (True, "_zoom")):
         fig, ax = plt.subplots(figsize=(8.5, 5.0))
         for v in (0, 1, 2):
@@ -88,7 +79,7 @@ def plot_bit_population(keys, outdir):
 
 
 def plot_bit_each(keys, outdir):
-    """비트별 분리 패널 + 20x20 공간분포 맵.  (EN: Separate panel per bit + 20x20 spatial distribution map.)"""
+    """비트별 분리 패널 + 20x20 공간분포 맵."""
     names = list(keys); n = len(names); x = np.arange(1, n + 1)
     pct = {v: [float((keys[f] == v).mean() * 100) for f in names] for v in (0, 1, 2)}
     fig, axes = plt.subplots(1, 3, figsize=(13, 4.4), sharey=True)
@@ -123,10 +114,9 @@ def plot_hd(keys, intra_per, outdir):
     iv = np.array(list(inter.values()))
     av = np.array([v for vs in intra_per.values() for v in vs]) if intra_per else np.array([])
     if not inter and not av.size:
-        return                                    # 이미지 1장 + intra 없음 → 그릴 것 없음  | EN: 1 image and no intra -> nothing to plot
+        return                                    # 이미지 1장 + intra 없음 → 그릴 것 없음
 
     # 분포 히스토그램
-    # EN: Distribution histogram
     fig, ax = plt.subplots(figsize=(8, 4.6))
     bins = np.linspace(0, 1, 26)
     if av.size:
@@ -141,7 +131,6 @@ def plot_hd(keys, intra_per, outdir):
     fig.tight_layout(); _save(fig, os.path.join(outdir, "FIG_HD_distribution.png"))
 
     # HD 행렬 (대각=intra, 비대각=inter)
-    # EN: HD matrix (diagonal=intra, off-diagonal=inter)
     mat = np.zeros((n, n))
     for i, a in enumerate(names):
         for j, b in enumerate(names):
@@ -160,7 +149,6 @@ def plot_hd(keys, intra_per, outdir):
     fig.tight_layout(); _save(fig, os.path.join(outdir, "FIG_HD_matrix.png"))
 
     # 막대: 샘플별 intra / 쌍별 inter
-    # EN: Bars: intra per sample / inter per pair
     fig, (a1, a2) = plt.subplots(1, 2, figsize=(11, 4.4))
     if intra_per:
         a1.bar(range(n), [np.mean(intra_per[f]) for f in names],
@@ -189,9 +177,9 @@ def plot_all(keys, raws=None, outdir=None, R=25):
 
 
 def main():
-    keys, raws, _ = E.extract_all()                  # 입력 폴더 전체 자동 처리  | EN: automatically process everything in the input folder
+    keys, raws, _ = E.extract_all()                  # 입력 폴더 전체 자동 처리
     if not keys:
-        print("이미지가 없습니다. 다음 폴더에 넣어주세요:\n  " + E.INPUT_DIR)  # EN: prints: "No images found. Please put them in this folder:"
+        print("이미지가 없습니다. 다음 폴더에 넣어주세요:\n  " + E.INPUT_DIR)
         return
     plot_all(keys, raws)
     print("figures -> %s/FIG_*.png" % E.OUTDIR)
