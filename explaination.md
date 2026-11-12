@@ -7,7 +7,7 @@
            * :arrow_down: *
 # Image preprocessing
 *Find circular area → crop →resize → remove noise →smooth puf_extract.py*
-          * :arrow_down: *
+           :arrow_down: 
 ### Detect microscopic spots
 *Enhance dark spots → threshold → filter → measure spot sizes → puf_extract.py*
            * :arrow_down:*
