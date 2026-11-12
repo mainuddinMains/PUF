@@ -38,14 +38,49 @@ puf_extract.py     Processes microscope images and creates PUF keys
 
 # Define the image-processing in [puf_extract_english.py](puf_extract_english.py)
 
-N = 20
-CANON_SIDE = 3024
-DENOISE_H = 7
-SMOOTH_SIG = 5
-BG_SIG = 80
-FLOOR = 14
-MIN_AREA = 120
-TERCILE = (33.3333, 66.6667)
+N = 20                        Divides the image into 20 rows and 20 columnsn\
+CANON_SIDE = 3024.            Resizes the cropped image to 3024×3024 pixelsn\
+DENOISE_H = 7.                Sets the noise-removal strengthn\
+SMOOTH_SIG = 5.               Controls Gaussian smoothingn\
+BG_SIG = 80.                  Estimates broad background illuminationn\
+FLOOR = 14.                   Minimum contrast needed for an initial spot candidaten\
+MIN_AREA = 120                Discards detected components smaller than 120 processed-image pixelsn\
+TERCILE = (33.3333, 66.6667). Divides the spot-size measurements into three categories
+
+
+<img width="992" height="382" alt="image" src="https://github.com/user-attachments/assets/796bd7d1-2acd-4f78-9f04-a00e360f191f" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
