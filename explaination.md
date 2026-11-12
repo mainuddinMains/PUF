@@ -5,25 +5,17 @@
 ### How the complete system works
 
 *Four original sample images*
-
 ⬇️
-
 ### Image preprocessing
 *Find circular area → crop → resize → remove noise → smooth → puf_extract.py*
-
 ⬇️
-
 ### Detect microscopic spots
 *Enhance dark spots → threshold → filter → measure spot sizes → puf_extract.py*
-
 ⬇️
-
 ### Generate a ternary key
 *20×20 cells → select one representative spot per cell → assign 0, 1, or 2 → puf_extract.py*
-
 ⬇️
-
 ### Evaluate generated keys
 *Graphs · heatmaps · population charts · Hamming distance distributions → puf_plots.py*
 
-# run_all.py *coordinates the entire pipeline.*
+ ⬆️ # run_all.py *coordinates the entire pipeline.*
