@@ -63,8 +63,11 @@ Sample1_spots.png shows the selected spot locations and sizes on the processed i
 
 
 
-
-
+```text
+why it gets generating the numbers?
+check the code if it generate the random number?
+more understanding of the code.
+```
 
 
 
