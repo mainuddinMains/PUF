@@ -13,7 +13,7 @@
            *:arrow_down:*
 ### Generate a ternary key
 *20*20 cells → select one representative spot pre cell → assign 0, 1, or 2 → put_extract.py*
-           arrow_down:
+           *⬇️ :arrow_down:*
 ### Evaluate generated keys
 *Graph . heatmaps . population charts . Hamming distance distributions → puf_plots.py*
           
