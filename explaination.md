@@ -36,3 +36,17 @@ puf_extract.py     Processes microscope images and creates PUF keys
 [Sample1_spots.png](PUF_최종결과/Sample1_spots.png).  Images showing selected detected spotsn\
 [Sample1_tricolor.png](PUF_최종결과/Sample1_tricolor.png).   Color-coded digital keys
 
+# Define the image-processing in [puf_extract_english.py](puf_extract_english.py)
+
+N = 20
+CANON_SIDE = 3024
+DENOISE_H = 7
+SMOOTH_SIG = 5
+BG_SIG = 80
+FLOOR = 14
+MIN_AREA = 120
+TERCILE = (33.3333, 66.6667)
+
+
+
+
