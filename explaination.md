@@ -10,9 +10,7 @@
            :arrow_down: 
 ### Detect microscopic spots
 *Enhance dark spots → threshold → filter → measure spot sizes → puf_extract.py*
-           <br>
-            ⬇️
-           <br>
+           <br> ⬇️ <br>
 ### Generate a ternary key
 *20*20 cells → select one representative spot pre cell → assign 0, 1, or 2 → put_extract.py*
            * :arrow_down:*
