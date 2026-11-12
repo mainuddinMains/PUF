@@ -21,7 +21,7 @@
 # run_all.py *coordinates the entire pipeline.*
 
 # Input Images
-<img width="279" height="329" alt="Sample1" src="https://github.com/user-attachments/assets/6ae0f765-48a2-46b7-8f9a-9c42f169219c" />.   <img width="279" height="332" alt="sample2" src="https://github.com/user-attachments/assets/00c6693d-fd0d-459d-988c-04e0eb43bf1a" />.   <img width="282" height="330" alt="sample3" src="https://github.com/user-attachments/assets/f8508571-8bbd-4521-b0f4-ec0c22173b99" />.   <img width="275" height="329" alt="sample4" src="https://github.com/user-attachments/assets/7c5f00a2-5e79-45f9-aaea-a508c66f7a77" />
+<img width="279" height="329" alt="Sample1" src="https://github.com/user-attachments/assets/6ae0f765-48a2-46b7-8f9a-9c42f169219c" />.<img width="279" height="332" alt="sample2" src="https://github.com/user-attachments/assets/00c6693d-fd0d-459d-988c-04e0eb43bf1a" />.<img width="282" height="330" alt="sample3" src="https://github.com/user-attachments/assets/f8508571-8bbd-4521-b0f4-ec0c22173b99" />.<img width="275" height="329" alt="sample4" src="https://github.com/user-attachments/assets/7c5f00a2-5e79-45f9-aaea-a508c66f7a77" />
 
 
 
