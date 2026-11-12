@@ -26,5 +26,7 @@
 
 puf_extract.py     Processes microscope images and creates PUF keys
 
-[puf_extract.py](https://github.com/user-attachments/files/34723725/puf_extract.py)
-[puf_extract.py](puf_extract.py)
+[puf_extract.py](puf_extract.py)   Processes microscope images and creates PUF keys
+[puf_metrics.py](puf_metrics.py).  Calculates performance and statistical metrics
+[puf_plots.py](puf_plots.py)   Generates all the experimental graphs
+[run_all.py](run_all.py).   Runs the entire project in sequence
