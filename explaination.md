@@ -17,5 +17,5 @@
 ⬇️
 ### Evaluate generated keys
 *Graphs · heatmaps · population charts · Hamming distance distributions → puf_plots.py*
-
- ⬆️ # run_all.py *coordinates the entire pipeline.*
+⬆️ 
+# run_all.py *coordinates the entire pipeline.*
