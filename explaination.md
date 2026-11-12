@@ -37,16 +37,15 @@ puf_extract.py     Processes microscope images and creates PUF keys
 [Sample1_tricolor.png](PUF_최종결과/Sample1_tricolor.png).   Color-coded digital keys
 
 # Define the image-processing in [puf_extract_english.py](puf_extract_english.py)
-
-N = 20                        Divides the image into 20 rows and 20 columnsn\
-CANON_SIDE = 3024.            Resizes the cropped image to 3024×3024 pixelsn\
-DENOISE_H = 7.                Sets the noise-removal strengthn\
-SMOOTH_SIG = 5.               Controls Gaussian smoothingn\
-BG_SIG = 80.                  Estimates broad background illuminationn\
-FLOOR = 14.                   Minimum contrast needed for an initial spot candidaten\
-MIN_AREA = 120                Discards detected components smaller than 120 processed-image pixelsn\
+```text
+N = 20                        Divides the image into 20 rows and 20 columns
+CANON_SIDE = 3024.            Resizes the cropped image to 3024×3024 pixels
+DENOISE_H = 7.                Sets the noise-removal strength
+SMOOTH_SIG = 5.               Controls Gaussian smoothing
+BG_SIG = 80.                  Estimates broad background illumination
+FLOOR = 14.                   Minimum contrast needed for an initial spot candidate
+MIN_AREA = 120                Discards detected components smaller than 120 processed-image pixels
 TERCILE = (33.3333, 66.6667). Divides the spot-size measurements into three categories
-
 
 <img width="992" height="382" alt="image" src="https://github.com/user-attachments/assets/796bd7d1-2acd-4f78-9f04-a00e360f191f" />
 
