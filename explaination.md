@@ -7,36 +7,37 @@
 *Four original sample images*
 ⬇️
 ### Image preprocessing
-*Find circular area → crop → resize → remove noise → smooth → puf_extract.py*
+*Find circular area → crop → resize → remove noise → smooth . puf_extract.py*
 ⬇️
 ### Detect microscopic spots
-*Enhance dark spots → threshold → filter → measure spot sizes → puf_extract.py*
+*Enhance dark spots → threshold → filter → measure spot sizes . puf_extract.py*
 ⬇️
 ### Generate a ternary key
-*20×20 cells → select one representative spot per cell → assign 0, 1, or 2 → puf_extract.py*
+*20×20 cells → select one representative spot per cell → assign 0, 1, or 2 . puf_extract.py*
 ⬇️
 ### Evaluate generated keys
-*Graphs · heatmaps · population charts · Hamming distance distributions → puf_plots.py*
-⬆️ 
+*Graphs · heatmaps · population charts · Hamming distance distributions . puf_plots.py*
+ 
 # run_all.py *coordinates the entire pipeline.*
 
 # Input Images
 <img width="279" height="329" alt="Sample1" src="https://github.com/user-attachments/assets/6ae0f765-48a2-46b7-8f9a-9c42f169219c" />.<img width="279" height="332" alt="sample2" src="https://github.com/user-attachments/assets/00c6693d-fd0d-459d-988c-04e0eb43bf1a" />.<img width="282" height="330" alt="sample3" src="https://github.com/user-attachments/assets/f8508571-8bbd-4521-b0f4-ec0c22173b99" />.<img width="275" height="329" alt="sample4" src="https://github.com/user-attachments/assets/7c5f00a2-5e79-45f9-aaea-a508c66f7a77" />
 
 
-puf_extract.py     Processes microscope images and creates PUF keys
+# Code files
 
 [puf_extract.py](puf_extract.py)   Processes microscope images and creates PUF keysn\
 [puf_metrics.py](puf_metrics.py).  Calculates performance and statistical metricsn\
 [puf_plots.py](puf_plots.py)   Generates all the experimental graphsn\
-[run_all.py](run_all.py).   Runs the entire project in sequencen\
+[run_all.py](run_all.py).   Runs the entire project in sequence
 
 [metrics.json](PUF_최종결과/metrics.json).  store numerical experimental resultsn\
 [Sample1_key.csv](PUF_최종결과/Sample1_key.csv).  Numerical 20×20 PUF keysn\
 [Sample1_spots.png](PUF_최종결과/Sample1_spots.png).  Images showing selected detected spotsn\
 [Sample1_tricolor.png](PUF_최종결과/Sample1_tricolor.png).   Color-coded digital keys
 
-# Define the image-processing in [puf_extract_english.py](puf_extract_english.py)
+# Define the image-processing in 
+[puf_extract_english.py](puf_extract_english.py)
 ```text
 N = 20                        Divides the image into 20 rows and 20 columns
 CANON_SIDE = 3024.            Resizes the cropped image to 3024×3024 pixels
@@ -50,8 +51,15 @@ TERCILE = (33.3333, 66.6667). Divides the spot-size measurements into three cate
 <img width="992" height="382" alt="image" src="https://github.com/user-attachments/assets/796bd7d1-2acd-4f78-9f04-a00e360f191f" />
 
 
+# How Output gets saved 
+* after generating the key, the program saves three files per input
+```text
+Sample1_key.csv. store the 400 numeric values.
+Sample1_tricolor.png  displys these values with colors.
+Sample1_spots.png shows the selected spot locations and sizes on the processed image.
+```
 
-
+* The key might be change based on the code running in different machine/computer. The code has no random steps. Same image, different computer or OpenCV version it can change a little
 
 
 
