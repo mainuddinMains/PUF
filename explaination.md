@@ -31,8 +31,8 @@ puf_extract.py     Processes microscope images and creates PUF keys
 [puf_plots.py](puf_plots.py)   Generates all the experimental graphsn\
 [run_all.py](run_all.py).   Runs the entire project in sequencen\
 
-[metrics.json](metrics.json).  store numerical experimental resultsn\
-[Sample1_key.csv](Sample1_key.csv).  Numerical 20×20 PUF keysn\
-[Sample1_spots.png](Sample1_spots.png).  Images showing selected detected spotsn\
-[Sample1_tricolor.png](Sample1_tricolor.png).   Color-coded digital keys
+[metrics.json](PUF_최종결과/metrics.json).  store numerical experimental resultsn\
+[Sample1_key.csv](PUF_최종결과/Sample1_key.csv).  Numerical 20×20 PUF keysn\
+[Sample1_spots.png](PUF_최종결과/Sample1_spots.png).  Images showing selected detected spotsn\
+[Sample1_tricolor.png](PUF_최종결과/Sample1_tricolor.png).   Color-coded digital keys
 
