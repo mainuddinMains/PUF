@@ -19,3 +19,4 @@
 *Graphs · heatmaps · population charts · Hamming distance distributions → puf_plots.py*
 ⬆️ 
 # run_all.py *coordinates the entire pipeline.*
+ https://github.com/mainuddinMains/PUF/blob/main/input%20img/Sample1.png 
