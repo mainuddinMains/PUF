@@ -1,4 +1,9 @@
 ## Physical Unclonable Function (PUF)
+*What this project produces*
+
+The pipeline [run_all.py](run_all.py) takes 4 microscope of spot patterns (Sample1 to sample4) and turns each one into a 20*20 ternary key: 400 cells, each holding the digit 0, 1, 2. it then measures how good those keys are as PUF fingerprints.
+Everything is saved in [ PUF_최종결과]( PUF_최종결과).
+
 *In the project, the image contan many small circular or spot like structures, program analyzes these patterns and converts them into numerical keys.*
 <img width="1000" height="435" alt="image" src="https://github.com/user-attachments/assets/485271bb-98c2-472c-b1e8-12d74addb596" />
 
