@@ -117,6 +117,8 @@ Intra-HD = 0.28 is how different the same tag is from its retakes.
 Separation = 0.66 − 0.28 = 0.38.
 ```
 * The random numbers use a fixed seed `np.random.default_rng(42)`, so the same computer gives the same 25 copies every time. Changing 42 to another number gives a different set of copies, and only intra-HD changes a little.
+ <img width="450" height="71" alt="image" src="https://github.com/user-attachments/assets/da562c61-dbf5-4601-b707-2a4b3e880856" />
+
 
  <img width="287" height="163" alt="image" src="https://github.com/user-attachments/assets/50effd2e-6d50-4031-accc-0ce7967c8c89" />
 
