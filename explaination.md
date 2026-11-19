@@ -203,13 +203,6 @@ intra-HD is the average over all 25 copies.
 If you change the seed or the computer setup, you get a different set of 25 copies. Slightly different cells flip, so the average comes out a little different (0.2784 vs 0.2908, for example).
 
 
-```text
-why it gets generating the numbers?
-check the code if it generate the random number?
-more understanding of the code.
-```
-
-
 
 
 
