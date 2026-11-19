@@ -70,6 +70,38 @@ Sample1_spots.png shows the selected spot locations and sizes on the processed i
 * The key might be change based on the code running in different machine/computer. The code has no random steps. Same image, different computer or OpenCV version it can change a little
 
 
+# Intra-HD (simulated retakes)
+*There are no real retake photos, so the code makes fake retakes by editing the same original photo.*
+
+[puf_metrics.py](puf_metrics.py) `perturb()` makes one altered copy of the original photo:
+```text
+brightness ±3%      lighter or darker
+noise               adds grain
+blur (50% chance)   imitates bad focus
+rotation ±1°        small tilt
+shift ±2 px         small move
+```
+`intra_hd()` makes **25 copies per sample**, extracts a key from each one and compares it to the original key.
+The result is the fraction of the 400 cells that changed (0 = same key, 0.667 = completely different key).
+
+* Separation (inter − intra) shows how easy it is to tell tags apart.
+```text
+Inter-HD = 0.66 is how different two different tags are.
+Intra-HD = 0.28 is how different the same tag is from its retakes.
+Separation = 0.66 − 0.28 = 0.38.
+```
+* The random numbers use a fixed seed `np.random.default_rng(42)`, so the same computer gives the same 25 copies every time. Changing 42 to another number gives a different set of copies, and only intra-HD changes a little.
+
+<img width="287" height="163" alt="image" src="https://github.com/user-attachments/assets/50effd2e-6d50-4031-accc-0ce7967c8c89" />
+
+
+### The 25 copies are made twice (issue)
+1. [run_all.py](run_all.py) → `M.full_report(...)` makes 25 copies → numbers go into **metrics.json**
+2. [run_all.py](run_all.py) → `V.plot_all(...)` → calls `M.intra_hd(...)` in [puf_plots.py](puf_plots.py) → makes **25 new copies** → numbers go into the **figures** (FIG_HD_bars.png, FIG_HD_matrix.png)
+
+The seed is set only once, so the second round gets different random numbers. That's why the intra-HD in the figures is slightly different from metrics.json.
+
+
 
 ```text
 why it gets generating the numbers?
