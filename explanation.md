@@ -120,6 +120,30 @@ The committed **CSVs** were made on Windows. Your run on Linux rewrote them with
 
 The data is unaffected, and Excel, Python and pandas read both styles the same way.
 -----
+# puf_metrics.py *grades the keys*
+[puf_metrics.py](puf_metrics.py) takes the keys made by `puf_extract.py` and calculates how good they are as PUF fingerprints. It only calculates numbers, it does not draw pictures.
+
+| Function | What it checks | Ideal |
+|---|---|---|
+| `entropy_axis()` / `entropy_profile()` (lines 31–48) | how mixed 0/1/2 are in each row (Ex) and column (Ey) | 1.0 |
+| `fractional_hd()` (line 54) | share of cells that differ between two keys (used by inter-HD and intra-HD) | — |
+| `inter_hd()` (line 64) | how different two **different** tags are | 0.667 |
+| `pearson_keys()` (line 59) | do two tags' keys look alike? | 0 |
+| `perturb()` + `intra_hd()` (lines 71–91) | makes 25 fake copies and checks how much the key changes | 0 |
+| `bit_population()` (line 97) | share of 0s, 1s, 2s | 33.3 % |
+| `degree_of_freedom()` (line 102) | how many truly independent cells the key has (data capacity) | higher is better |
+
+`full_report()` (line 110) runs all of the above and collects the results → saved as **metrics.json**.
+
+```text
+puf_extract.py  → makes the keys
+puf_metrics.py  → grades the keys → metrics.json
+puf_plots.py    → draws the graphs
+run_all.py      → runs all three in order
+```
+* It can also run on its own: `python3 puf_metrics.py` → extracts the keys, calculates everything and saves metrics.json.
+-----
+
 # Intra-HD (simulated retakes)
 *There are no real retake photos, so the code makes fake retakes by editing the same original photo.*
 
