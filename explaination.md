@@ -63,6 +63,9 @@ Sample1_key.csv. store the 400 numeric values.
 Sample1_tricolor.png  displys these values with colors.
 Sample1_spots.png shows the selected spot locations and sizes on the processed image.
 ```
+* Here is the output sample 
+  
+  <img width="684" height="366" alt="image" src="https://github.com/user-attachments/assets/f4c72f96-5e0d-4c12-b7ea-e1648d7f4b62" />
 
 * The key might be change based on the code running in different machine/computer. The code has no random steps. Same image, different computer or OpenCV version it can change a little
 
