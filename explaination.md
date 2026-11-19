@@ -118,7 +118,7 @@ Separation = 0.66 − 0.28 = 0.38.
 ```
 * The random numbers use a fixed seed `np.random.default_rng(42)`, so the same computer gives the same 25 copies every time. Changing 42 to another number gives a different set of copies, and only intra-HD changes a little.
 
-<img width="287" height="163" alt="image" src="https://github.com/user-attachments/assets/50effd2e-6d50-4031-accc-0ce7967c8c89" />
+ <img width="287" height="163" alt="image" src="https://github.com/user-attachments/assets/50effd2e-6d50-4031-accc-0ce7967c8c89" />
 
 
 ### The 25 copies are made twice (issue)
@@ -126,7 +126,8 @@ Separation = 0.66 − 0.28 = 0.38.
    <img width="683" height="105" alt="image" src="https://github.com/user-attachments/assets/5cb125a5-7ad4-4e0f-ab71-e90c7a72cf1b" />
 
 2. [run_all.py](run_all.py) → `V.plot_all(...)` → calls `M.intra_hd(...)` in [puf_plots.py](puf_plots.py) → makes **25 new copies** → numbers go into the **figures** (FIG_HD_bars.png, FIG_HD_matrix.png)
- <img width="605" height="108" alt="image" src="https://github.com/user-attachments/assets/c73c13e3-f48c-463d-a907-ec1267705295" />
+
+   <img width="605" height="108" alt="image" src="https://github.com/user-attachments/assets/c73c13e3-f48c-463d-a907-ec1267705295" />
 
 
 The seed is set only once, so the second round gets different random numbers. That's why the intra-HD in the figures is slightly different from metrics.json.
