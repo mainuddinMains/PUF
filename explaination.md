@@ -66,10 +66,52 @@ Sample1_spots.png shows the selected spot locations and sizes on the processed i
 * Here is the output sample 
   
   <img width="684" height="366" alt="image" src="https://github.com/user-attachments/assets/f4c72f96-5e0d-4c12-b7ea-e1648d7f4b62" />
+  <img width="292" height="26" alt="image" src="https://github.com/user-attachments/assets/672e1a07-1df0-45c4-9b4f-31d732252efa" /> It is compare between two samples 
 
+  # Understanding the run_all.py output
+  ### [1] Key extraction (one line per photo)
+* **spots** = number of spots found in the photo
+* **thr** = the two size cut-offs (spot diameter in pixels)
+* **bits** = % of cells that became 0, 1, 2 (ideal ≈ 33.3% each)
+
+### What is a cut-off?
+The size limit that decides 0, 1 or 2. Example for Sample1:
+```text
+size < 39.7          → 0  (small)
+39.7 ≤ size < 58.1   → 1  (medium)
+size ≥ 58.1          → 2  (large)
+```
+Each photo gets its own cut-offs so the 400 cells split into three equal groups.
+* Spots close to a cut-off flip easily: a spot of 39.5 is **0**, after a little blur it may measure 39.9 and become **1**.
+
+### Summary
+| Line | Meaning | Value | Ideal |
+|---|---|---|---|
+| Ex/Ey 평균 | randomness of rows / columns (entropy) | 0.952 / 0.896 | 1.0 |
+| 비트 균일도 | share of 0s / 1s / 2s | 33.2 / 33.4 / 33.3 % | 33.3 % |
+| inter-HD | difference between **different** tags | 0.663 ± 0.027 | 0.667 |
+| Pearson | do two tags' keys look alike? | 0.016 | 0 |
+| intra-HD (시뮬) | difference between a tag and its own fake copies | 0.278 ± 0.117 | 0 |
+| 분리도 | separation = inter-HD − intra-HD | 0.385 | 0.667 |
+
+### Pearson
+Checks if two tags' keys look alike. It compares the **original keys** of different samples (6 pairs: Sample1 vs sample2, Sample1 vs sample3, ...), and 0.016 is the average.
+* close to 1 → keys look alike (bad)
+* close to 0 → keys have nothing in common (good)
+
+0.016 ≈ 0 → every tag's key is completely different, like fingerprints.
+
+### intra-HD = 0.278 ± 0.117
+Every fake copy's key is compared with the original key.
+* **0.278** = average difference → about 28% of cells changed (≈ 111 of 400)
+* **± 0.117 (sd)** = how much that difference varies between copies → most copies are between about 16% and 40%
+
+Why copies differ: each copy gets different random edits. Small edits → few cells flip, bigger edits (more tilt, blur) → many cells flip. The samples also differ: sample3 is the most stable (≈ 24%), sample4 the least (≈ 32%).
+
+**"intra-HD is high"** = too many cells change when the same tag is read again (ideal 0, ours 28%). A good PUF usually changes less than 10%.
 * The key might be change based on the code running in different machine/computer. The code has no random steps. Same image, different computer or OpenCV version it can change a little
 
-**Every line in a text file ends with an invisible "new line" marker, and Windows and Linux write it differently:**
+***CSV*** **Every line in a text file ends with an invisible "new line" marker, and Windows and Linux write it differently:**
 ```text
  Windows ends each line with two characters, \r\n (CRLF).
  Linux ends each line with one character, \n (LF).
@@ -138,7 +180,7 @@ The seed is set only once, so the second round gets different random numbers. Th
 
 **The numbers changed because the code makes random copies, and this run produced slightly different ones.**
 
-The code fixes the randomness with a seed (42), so the same computer setup should give the same copies every time. n\
+The code fixes the randomness with a seed (42), so the same computer setup should give the same copies every time.
 The old results were made on a different computer, probably Windows, and possibly with different versions of the Python libraries (numpy, OpenCV). Different versions can produce slightly different random grain or slightly different tilted images.
 
 Slightly different copies give slightly different keys, so the intra-HD numbers shift a little.
