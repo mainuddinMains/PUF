@@ -123,6 +123,31 @@ Separation = 0.66 − 0.28 = 0.38.
 
 The seed is set only once, so the second round gets different random numbers. That's why the intra-HD in the figures is slightly different from metrics.json.
 
+-----
+
+**The numbers changed because the code makes random copies, and this run produced slightly different ones.**
+
+The code fixes the randomness with a seed (42), so the same computer setup should give the same copies every time. n\
+The old results were made on a different computer, probably Windows, and possibly with different versions of the Python libraries (numpy, OpenCV). Different versions can produce slightly different random grain or slightly different tilted images.
+
+Slightly different copies give slightly different keys, so the intra-HD numbers shift a little.
+*code and photos* didn't change. Only the computer setup did, and the differences are tiny, at most about 0.01.
+
+-----
+**Each fake copy is read by the same key-making code, and small edits to the photo can flip some cells.**
+
+Each cell gets 0, 1 or 2 depending on the size of its spot (small, medium or large).
+
+Some spots are close to the cut-off between two sizes. For example, a spot right at the edge between "small" and "medium".n\
+A tiny edit (a bit of blur, a slight tilt) can push that spot just over the cut-off, so the cell flips, say from 0 to 1.n\
+Different copies get different random edits, so different cells flip:
+```text
+copy 1 might flip 110 cells, which gives 0.275
+copy 2 might flip 125 cells, which gives 0.31
+...
+intra-HD is the average over all 25 copies.
+```
+If you change the seed or the computer setup, you get a different set of 25 copies. Slightly different cells flip, so the average comes out a little different (0.2784 vs 0.2908, for example).
 
 
 ```text
