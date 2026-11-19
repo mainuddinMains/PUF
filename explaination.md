@@ -84,7 +84,25 @@ shift ±2 px         small move
 `intra_hd()` makes **25 copies per sample**, extracts a key from each one and compares it to the original key.
 The result is the fraction of the 400 cells that changed (0 = same key, 0.667 = completely different key).
 
-* Separation (inter − intra) shows how easy it is to tell tags apart.
+**The copies are made in puf_metrics.py:71-91.**
+
+*perturb(), lines 71–82, makes one altered copy*
+```text
+Line 75:   makes it brighter or darker by up to ±3%.
+Line 76:   adds grain (noise).
+Lines 78–79: blurs it half the time, to imitate bad focus.
+Line 80:   tilts it by up to ±1°.
+Line 81:   shifts it by up to ±2 pixels.
+```
+ <img width="621" height="226" alt="image" src="https://github.com/user-attachments/assets/98ff566e-6e51-4689-843e-080bbcab0788" />
+
+```text
+intra_hd(), lines 85–91, makes 25 copies per sample (R=25), 
+extracts a key from each and compares it to the original key with fractional_hd.
+```
+ <img width="644" height="139" alt="image" src="https://github.com/user-attachments/assets/ace83c38-252a-421f-8e9b-76b52aeba1e8" />
+
+* Separation (inter − intra) shows how easy it is to tell tags apart.*
 ```text
 Inter-HD = 0.66 is how different two different tags are.
 Intra-HD = 0.28 is how different the same tag is from its retakes.
