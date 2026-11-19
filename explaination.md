@@ -69,7 +69,15 @@ Sample1_spots.png shows the selected spot locations and sizes on the processed i
 
 * The key might be change based on the code running in different machine/computer. The code has no random steps. Same image, different computer or OpenCV version it can change a little
 
+**Every line in a text file ends with an invisible "new line" marker, and Windows and Linux write it differently:**
+```text
+ Windows ends each line with two characters, \r\n (CRLF).
+ Linux ends each line with one character, \n (LF).
+```
+The committed **CSVs** were made on Windows. Your run on Linux rewrote them with Linux endings, so every line counts as different to git even though the numbers are exactly the same.
 
+The data is unaffected, and Excel, Python and pandas read both styles the same way.
+-----
 # Intra-HD (simulated retakes)
 *There are no real retake photos, so the code makes fake retakes by editing the same original photo.*
 
