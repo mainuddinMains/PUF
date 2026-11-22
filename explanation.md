@@ -227,8 +227,28 @@ intra-HD is the average over all 25 copies.
 If you change the seed or the computer setup, you get a different set of 25 copies. Slightly different cells flip, so the average comes out a little different (0.2784 vs 0.2908, for example).
 
 
+----
+# puf_plots.py *draws the graphs*
+[puf_plots.py](puf_plots.py) takes the keys and the numbers from `puf_metrics.py` and turns them into graphs. All are saved as `FIG_*.png` in `PUF_최종결과`.
 
+| Function | Output file | What the picture shows |
+|---|---|---|
+| `plot_entropy_g()` (line 39) | FIG_entropy_g.png | randomness of each row (Ex) and column (Ey) per sample, closer to 1 is better (paper Fig 4g) |
+| `plot_bit_population()` (line 60) | FIG_bit_population.png, FIG_bit_population_zoom.png | % of 0s, 1s, 2s per sample, dotted line = ideal 33.3%. Zoom version enlarges the area around 33% (paper Fig 4f) |
+| `plot_bit_each()` (line 81) | FIG_bit_each_population.png | the same %, one panel per bit |
+| | FIG_bit_each_map.png | where each bit sits on the 20×20 map, per sample |
+| `plot_hd()` (line 111) | FIG_HD_distribution.png | histogram: intra-HD (blue) vs inter-HD (red), far apart = good |
+| | FIG_HD_matrix.png | 4×4 table: diagonal = intra (same tag), others = inter (different tags) |
+| | FIG_HD_bars.png | left: intra-HD per sample (lower = better), right: inter-HD per pair (higher = better) |
 
+**Helpers**
+```text
+_save()     (line 30)    saves each figure through the temporary _plt.png
+plot_all()  (line 168)   runs all the drawing functions, and calls M.intra_hd() again → 2nd set of 25 copies
+```
+**Colors** (line 26): 0 = yellow, 1 = teal, 2 = purple (same as the paper).
+
+* It can also run on its own: `python3 puf_plots.py` → extracts the keys and draws all the figures.
 
 
 
